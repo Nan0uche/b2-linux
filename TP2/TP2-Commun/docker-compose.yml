@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  front:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+
+  back:
+    image: webpython
+
+  la_grosse_db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=meow
+    volumes:
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+  dbpanel:
+    image: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: la_grosse_db
+      PMA_USER: meow
+      PMA_PASSWORD: meow

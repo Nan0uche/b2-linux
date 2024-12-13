@@ -1,0 +1,16 @@
+services:
+  web:
+    image: nginxu
+    ports:
+      - "1234:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+    cap_drop:
+      - ALL 
+    cap_add:
+      - NET_BIND_SERVICE 
