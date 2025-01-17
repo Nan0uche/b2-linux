@@ -1,0 +1,7 @@
+[Unit]
+Description=Exécuter un check AIDE
+Wants=aide.timer
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aide --check

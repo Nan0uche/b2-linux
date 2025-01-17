@@ -1,0 +1,9 @@
+[Unit]
+Description=Lancer un check AIDE toutes les 10 minutes
+
+[Timer]
+OnUnitActiveSec=10min
+Unit=aide.service
+
+[Install]
+WantedBy=timers.target
